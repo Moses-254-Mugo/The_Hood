@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm,PostForm, BusinessForm, CommentForm
 from django.http import HttpResponseRedirect
-from .models import Health, Profile
+from .models import Health, Profile, Police
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
@@ -65,3 +65,11 @@ def well_being(request):
     health = Health.objects.filter(neighbourhood=profile.neighbourhood)
 
     return render(request,'health.html', {'health':health})
+
+@login_required(login_url='/accounts/login/')
+def authorities(request):
+    current_user = request.user
+    profile = Profile.objects.get(username =  current_user)
+    authorities = Police.objects.filter(neighbourhood = profile.neighbourhood) 
+
+    return render(request, 'authorities.html',{'authorities': authorities})
