@@ -7,7 +7,8 @@ urlpatterns =[
     path('', views.index, name = 'index'),
     path('my-profile/', views.myProfile, name='my-profile'),
     path('create/profile', views.New_profile, name='new-profile'),
-    path('update/profile',views.update_profile, name='update_profile')
+    path('update/profile',views.update_profile, name='update_profile'),
+    path('health', views.well_being, name="health")
     # path('search/', views.search_results, name='search_results')t
 
 ]

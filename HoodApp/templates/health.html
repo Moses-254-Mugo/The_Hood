@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <h2>Health Services Section</h2>
+
+            {% for well in health%}
+            <h3 class="card-title" data-toggle="modal" data-target="{{well.id}}">{{well.name}}</h3>
+            <p>Phone Number: {{well.contact}}</p>
+            <p>Address: {{well.address}}</p>
+            <p>email: {{well.email}}</p>
+            <p></p>
+
+            {% endfor %}
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+{% endblock %}
