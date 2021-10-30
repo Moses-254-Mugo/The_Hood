@@ -83,19 +83,7 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment
 
-
-
-
-
-
-
-
-
-
-
-
-
-#  @classmethod
-#     def search_by_title(cls,search_term):
-#         news = cls.objects.filter(title__icontains=search_term)
-#         return news
+    @classmethod
+    def search_post(cls,search_term):
+        post = cls.objects.filter(title__icontains=search_term)
+        return post

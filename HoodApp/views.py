@@ -105,7 +105,9 @@ def Newpost(request):
 
 
 @login_required(login_url='/accounts/login/')
-def search_restuls(request):
+def search_results(request):
+    current_user = request.user
+    profile = Profile.objects.get(username=current_user)
     if 'post' in request.GET and request.GET["post"]:
          search_term = request.GET.get("post")
          searhed_post = Post.search_post(search_term)
@@ -113,7 +115,7 @@ def search_restuls(request):
 
          print(searhed_post)
 
-         return render(request, 'search.html', {'message':message})
+         return render(request, 'search.html', {'message':message, 'post': searhed_post, 'profile': profile})
     else:
         message= 'You have not search for any term'
         return render(request, 'saeach.html', {'message':message})
