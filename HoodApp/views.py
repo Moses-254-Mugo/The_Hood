@@ -100,4 +100,4 @@ def Newpost(request):
     else:
         form = PostForm()
 
-    return render(request, 'post_form.html',{'form':form})
+    return render(request, 'post-form.html',{'form':form})
