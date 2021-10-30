@@ -1,4 +1,3 @@
-from os import name
 from django.db import models
 from cloudinary.models import CloudinaryField
 from tinymce.models import HTMLField
@@ -75,7 +74,13 @@ class Police(models.Model):
     def __str__(self):
         return self.name
 
+class Comment(models.Model):
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    comment = models.CharField(max_length=500)
 
+    def __str__(self):
+        return self.comment
 
 
 
