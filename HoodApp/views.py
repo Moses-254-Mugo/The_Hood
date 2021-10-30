@@ -81,3 +81,23 @@ def posts(request):
     post = Post.objects.filter(neighbourhood=profile.neighbourhood)
 
     return render(request, 'post.html', {'post':post})
+
+@login_required(login_url='/accounts/login/')
+def Newpost(request):
+    current_user = request.user
+    profile = PostForm.objects.get(username=current_user)
+
+    if request.method=="POST":
+        form = PostForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit = False)
+            post.username = current_user
+            post.neighbourhood = profile.neighbourhood
+            post.post_img = profile.image
+            post.save()
+        
+        return HttpResponseRedirect('/post')
+    else:
+        form = PostForm()
+
+    return render(request, 'post_form.html',{'form':form})
