@@ -6,26 +6,18 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             {% for posts in post%}
-            <a href="/view/posts/{{posts.id}}">
-                <h4>{{posts.title}}</h4>
-            </a>
-            <a href="/user/{{posts.username}}">
-                <h5>{{posts.username}}</h5>
-            </a>
             
-                <p>{{posts.post}}</p>
-                <p>{{posts.neighbourhood}}</p>
-            <a href="/view/posts/{{posts.id}}">Read More...</a>
-
-
-            <a href="{% url 'new_post' %}">
-                <button class="bnt btn-outline-primary">Post an Update</button>
-            </a>
+                <h4><b>Title: </b>{{posts.title}}</h4>
             
-
-
+                <h5><b>Username:</b> {{posts.username}}</h5>
+            
+                <h6><b>Post:</b>{{posts.post}}</h6>
+                <p><b>Neighbourhood:</b> {{posts.neighbourhood}}</p>
             
             {% endfor %}
+            <a href="{% url 'new_post' %}">
+                <button class="bnt btn-primary">Post Update</button>
+            </a>
         </div>
         <div class="col-sm-2"></div>
     </div>

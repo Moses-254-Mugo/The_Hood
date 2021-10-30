@@ -4,6 +4,7 @@ from .forms import ProfileForm,PostForm, BusinessForm, CommentForm
 from django.http import HttpResponseRedirect
 from .models import Health, Profile, Police,Post
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
@@ -85,7 +86,7 @@ def posts(request):
 @login_required(login_url='/accounts/login/')
 def Newpost(request):
     current_user = request.user
-    profile = PostForm.objects.get(username=current_user)
+    profile=PostForm.objects.get(username=current_user)
 
     if request.method=="POST":
         form = PostForm(request.POST,request.FILES)
