@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            {% for autho in authorities%}
+            <h3 class="card-title" data-target="#{{autho.id}}">{{autho.name}}</h3>
+            <hr>
+            <p>Neighbourhood: {{autho.neighbourhood}}</p>
+            <p>Contact: {{autho.contact}}</p>
+            <p>Address: {{autho.address}}</p>
+            <p>Email: {{autho.email}}</p>
+            <hr>
+            {% endfor %}
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+{% endblock %}
