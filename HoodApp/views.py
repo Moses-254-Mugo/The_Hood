@@ -36,4 +36,4 @@ def New_profile(request):
     else:
 
         form = ProfileForm()
-    return render(request, 'form_profile.html',{'form': form})
+    return render(request, 'profile_form.html',{'form': form})
