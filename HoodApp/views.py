@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from .forms import ProfileForm,PostForm, BusinessForm, CommentForm
+from django.http import HttpResponseRedirect
 from .models import Profile
-# from .forms import ProfleForm
 from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
@@ -22,3 +23,17 @@ def myProfile(request):
     profiles =Profile.objects.get(username=current_user)
     return render(request, 'user_profile.html', {'profiles':profiles})
 
+@login_required(login_url='/accounts/login/')
+def New_profile(request):
+    current_user = request.user
+    if request.method=="POST":
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit = False)
+            profile.username = current_user
+            profile.save()
+        return HttpResponseRedirect('/')
+    else:
+
+        form = ProfileForm()
+    return render(request, 'form_profile.html',{'form': form})

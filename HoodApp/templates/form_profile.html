@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{%block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <h2>Create Proifle</h2>
+            <form action="{% url '' %}" method="post" enctype="multipart/form-data">
+
+                {% csrf_token%}
+                {% bootstrap_form form %}
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-outline-success" value="Post">
+                </div>
+                <input type="hidden" name="next" value="/">
+            </form>
+
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+{% endblock%}
