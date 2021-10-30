@@ -102,3 +102,18 @@ def Newpost(request):
         form = PostForm()
 
     return render(request, 'post-form.html',{'form':form})
+
+
+@login_required(login_url='/accounts/login/')
+def search_restuls(request):
+    if 'post' in request.GET and request.GET["post"]:
+         search_term = request.GET.get("post")
+         searhed_post = Post.search_post(search_term)
+         message = f'{search_term}'
+
+         print(searhed_post)
+
+         return render(request, 'search.html', {'message':message})
+    else:
+        message= 'You have not search for any term'
+        return render(request, 'saeach.html', {'message':message})
