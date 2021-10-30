@@ -2,10 +2,12 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <img src="{{profiles.image.url}}" alt="image" style="width: 450px;">
-        <p>user {{profiles.username}}</p>
-        <p>Desc {{profiles.descriptoin |safe</p>
-        <p>Email {{profiles .email}}</p>
+        <img src="{{profiles.image.url}}" alt="image" style="width: 450px;"><br>
+        <p><b>name</b>: {{profiles.name}}</p><br>
+        <p><b>Neighbourhood</b>: {{profiles.neighbourhood}}</p><br>
+        <p><b>user</b>: {{profiles.username}}</p><br>
+        <p><b>Description</b>: {{profiles.description |safe}}</p><br>
+        <p><b>Email</b>: {{profiles.email}}</p>
     </div>
 </div>
 {% endblock %}

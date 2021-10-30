@@ -29,7 +29,7 @@ class Profile(models.Model):
     email = models.EmailField()
 
     def __str__(self):
-        return self.description
+        return self.name
 
 class Post(models.Model):
     post_img = CloudinaryField('image')
