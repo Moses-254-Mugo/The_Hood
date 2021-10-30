@@ -10,6 +10,9 @@ urlpatterns =[
     path('update/profile',views.update_profile, name='update_profile'),
     path('health', views.well_being, name="health"),
     path('authorities', views.authorities, name="authorities"),
+    path('post', views.posts, name="post"),
+    # path('new/post', views.posts, name="new_post"),
+    
     
     # path('search/', views.search_results, name='search_results')t
 

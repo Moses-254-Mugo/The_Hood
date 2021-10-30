@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<di class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            {% for posts in post%}
+            <a href="/view/posts/{{posts.id}}">
+                <h4>{{posts.title}}</h4>
+            </a>
+            <a href="/user/{{posts.username}}">
+                <h5>{{posts.username}}</h5>
+            </a>
+            
+                <p>{{posts.post}}</p>
+                <p>{{posts.neighbourhood}}</p>
+            <a href="/view/posts/{{posts.id}}">Read More...</a>
+
+
+            <a href="{% url 'new-post' %}">
+                <button class="bnt btn-outline-primary">Post an Update</button>
+            </a>
+            
+
+
+            
+            {% endfor %}
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</di>
+{% endblock %}
