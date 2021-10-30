@@ -1,10 +1,31 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from .models import Profile
+from .forms import ProfleForm
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 # @login_required(login_url='/accounts/login/')
 def welcome(request):
     return render(request, 'welcome.html')
+
+def index(request):
+    try:
+        if not request.user.is_authenticated:
+            return redirect('/accounts/login')
+        current_user = request.user
+        profile = Profile.objects.get(username=current_user)
+    except ObjectDoesNotExist:
+        return redirect('create-profile')
+    return redirect(request, 'index.html')
+
+
+@login_required(login_url='/accounts/login/')
+def myProfile(request):
+    current_user= request.user
+    profiles =Profile.objects.get(username=current_user)
+    return render(request, 'profile/user_profile.hmtl', {'profiles':profiles})
+
 
 # def search_results(request):
 
