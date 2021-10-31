@@ -112,7 +112,7 @@ def business(request):
     return render(request, 'business.html',{'business':business})
 
 @login_required(login_url='/accounts/login/')
-def create_business(request):
+def create_new_business(request):
     current_user = request.user
     profile = Profile.objects.get(username=current_user)
 

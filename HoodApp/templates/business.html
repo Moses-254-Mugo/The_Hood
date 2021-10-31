@@ -13,5 +13,8 @@
     <p>{{businesses.email}}</p>
     <p></p>
     {% endfor %}
+    <a href="{% url 'new_business' %}">
+        <button class="btn btn-primary">Register a Business</button>
+    </a>
 </div>
 {% endblock %}
