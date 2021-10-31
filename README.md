@@ -35,7 +35,7 @@ The Neighbourhood is a web app that allows users to sign in, set user profile, f
 
     Then run below query to create a new database named 
 
-        # create databases dbHood;
+        # create databases hood;
 5. Create Database migrations
     make migrations on postgres using django
 

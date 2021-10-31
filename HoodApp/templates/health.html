@@ -3,20 +3,37 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-            <h2>Health Services Section</h2>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="health">
+                <hr>
+                <h2 class="text-center" style="font-size: 28px; font-weight: bold; color: blue;">~~~~~Health Services Section~~~~~</h2>
+            <hr>
 
             {% for well in health%}
-            <h3 class="card-title" data-toggle="modal" data-target="{{well.id}}">{{well.name}}</h3>
-            <p>Phone Number: {{well.contact}}</p>
-            <p>Address: {{well.address}}</p>
-            <p>email: {{well.email}}</p>
-            <p></p>
+            <h5 class="text-center" data-toggle="modal" data-target="{{well.id}}"><b>name: </b>{{well.name}}</h5>
+            <p class="text-center"><b>Phone Number:</b> {{well.contact}}</p>
+            <p class="text-center"><b>Address:</b> {{well.address}}</p>
+            <p class="text-center" style="color: blue;"><b>email:</b> {{well.email}}</p>
+            <p class="text-center" style="color: blue;"><b>Contact: </b>+{{well.contact}}</p><hr>
 
             {% endfor %}
-        </div>
-        <div class="col-sm-4"></div>
+            </div>            
+        </div><!-- End of col-->
+        <div class="col-sm-3"></div>
     </div>
 </div>
+<style>
+    body{
+        background-color: lavender;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .health{
+        padding: 20px;
+        margin-top: 30px; ;
+    }
+    hr{
+        border: 2px double #000;
+    }
+</style>
 {% endblock %}
