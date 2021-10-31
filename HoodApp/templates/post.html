@@ -2,28 +2,50 @@
 {% load bootstrap4 %}
 {% block content %}
 <div class="container">
-    {% for posts in post%}
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card h-100">
-          <h4><b>Title: </b>{{posts.title}}</h4>
-          <img src="{{posts.image.url}}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title"><b>Username:</b> {{posts.username}}</h5>
-            <p class="card-text"><b>Post:</b>{{posts.post}}</p>
-            <h5 class="card-title"><b>Neighbourhood:</b> {{posts.neighbourhood}}</h5>
+  <div class="text-center">
+    <a href="{% url 'new_post' %}">
+        <button class="bnt btn-primary">Post Update</button>
+    </a>
+</div>
+{% for posts in post%}
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">....</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      {% for posts in post%}
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <h4><b>Title: </b>{{posts.title}}</h4>
+            <img src="{{posts.image.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><b>Username:</b> {{posts.username}}</h5>
+              <p class="card-text"><b>Post:</b>{{posts.post}}</p>
+              <h5 class="card-title"><b>Neighbourhood:</b> {{posts.neighbourhood}}</h5>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    {% endfor %}
-    <div class="text-center">
-      <a href="{% url 'new_post' %}">
-          <button class="bnt btn-outline-primary">Post Update</button>
-      </a>
-  </div> 
+      {% endfor %}
+     
                
 </div>
+<style>
+  button{
+    margin: 8px;
+    padding: 5px;
+  }
+</style>
 {% endblock %}
     
             

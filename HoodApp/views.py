@@ -86,7 +86,7 @@ def posts(request):
 @login_required(login_url='/accounts/login/')
 def Newpost(request):
     current_user = request.user
-    profile=PostForm.objects.get(username=current_user)
+    profile=Profile.objects.get(username=current_user)
 
     if request.method=="POST":
         form = PostForm(request.POST,request.FILES)
