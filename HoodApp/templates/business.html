@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container">
+    {% for businesses in business%}
+    <p>{{businesses.name}}</p>
+    <hr>
+    <p>{{businesses.bus_owner}}</p>
+    <p>{{businesses.description}}</p>
+    <p>{{businesses.neighbourhood}}</p>
+    <hr>
+    <h4>Contacts</h4>
+    <p>{{businesses.email}}</p>
+    <p></p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm,PostForm, BusinessForm, CommentForm
 from django.http import HttpResponseRedirect
-from .models import Health, Profile, Police,Post
+from .models import Health, Profile, Police,Post,Business
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 
@@ -102,6 +102,31 @@ def Newpost(request):
         form = PostForm()
 
     return render(request, 'post-form.html',{'form':form})
+
+@login_required(login_url='/accounts/login/')
+def business(request):
+    current__user=request.user
+    profile=Profile.objects.get(username=current__user)
+    business =Business.objects.filter(neighbourhood=profile.neighbourhood)
+
+    return render(request, 'business.html',{'business':business})
+
+@login_required(login_url='/accounts/login/')
+def create_business(request):
+    current_user = request.user
+    profile = Profile.objects.get(username=current_user)
+
+    if request.method=="POST":
+        form= BusinessForm(request.POST, request.FILES)
+        if form.is_valid():
+            business = form.save(commit=False)
+            business.owner = current_user
+            business.neighbourhood = profile.neighbourhood
+            business.save()
+        return HttpResponseRedirect('/business')
+    else:
+        form = BusinessForm()
+    return render(request, 'business_form.html', {'form': form})
 
 
 @login_required(login_url='/accounts/login/')
