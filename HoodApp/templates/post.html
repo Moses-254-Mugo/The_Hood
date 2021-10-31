@@ -1,25 +1,29 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% block content %}
-<di class="container">
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
-            {% for posts in post%}
-            
-                <h4><b>Title: </b>{{posts.title}}</h4>
-            
-                <h5><b>Username:</b> {{posts.username}}</h5>
-            
-                <h6><b>Post:</b>{{posts.post}}</h6>
-                <p><b>Neighbourhood:</b> {{posts.neighbourhood}}</p>
-            
-            {% endfor %}
-            <a href="{% url 'new_post' %}">
-                <button class="bnt btn-primary">Post Update</button>
-            </a>
+<div class="container">
+    {% for posts in post%}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <h4><b>Title: </b>{{posts.title}}</h4>
+          <img src="{{posts.image.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><b>Username:</b> {{posts.username}}</h5>
+            <p class="card-text"><b>Post:</b>{{posts.post}}</p>
+            <h5 class="card-title"><b>Neighbourhood:</b> {{posts.neighbourhood}}</h5>
+          </div>
         </div>
-        <div class="col-sm-2"></div>
+      </div>
     </div>
-</di>
+    {% endfor %}
+    <div class="text-center">
+      <a href="{% url 'new_post' %}">
+          <button class="bnt btn-outline-primary">Post Update</button>
+      </a>
+  </div> 
+               
+</div>
 {% endblock %}
+    
+            
