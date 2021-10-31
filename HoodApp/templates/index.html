@@ -6,29 +6,40 @@
         <div class="col-sm-12">
             <div class="jumbotron">
             <h1 class="text-center">WELCOME TO THE NEIGHBOURHOOD</h1>
-        </div>
 
-        <div class="row">
-            <dv class="col-sm-6">
-                <a href="{% url 'authorities' %}">
-                    <h1 class="text-center">Authorites/police</h1>
-                </a>
-                
-            </dv>
-            <div class="col-sm-6">
-                <a href="{%url 'health' %}">
-                    <h1 class="text-center">Health Services</h1>
-                </a>
+            <div class="row">
+                <dv class="col-sm-6">
+                    <a href="{% url 'authorities' %}">
+                        <h1 class="text-center">Authorites</h1>
+                    </a>
+                    
+                </dv>
+                <div class="col-sm-6">
+                    <a href="{%url 'health' %}">
+                        <h1 class="text-center">Health Services</h1>
+                    </a>
+                </div>
             </div>
         </div>
+
+        
     </div>
 </div>
 <style>
     body{
-        background: url(https://t3.ftcdn.net/jpg/02/42/35/80/240_F_242358013_1ZNmuOcFlpBpVxhb7j2t2KhL9AnIh7XZ.jpg) no-repeat;
+        background: url(https://i.ytimg.com/vi/n529hDCIoAE/maxresdefault.jpg) no-repeat;
         background-size: cover;
         background-position: center;
+         
         font-family: 'Times New Roman', Times, serif;
+    }
+    .jumbotron{
+        margin-top: 30px;
+        padding: 100px;
+        opacity: .7;
+    }
+    h1{
+        margin: 10px;
     }
    
 </style>

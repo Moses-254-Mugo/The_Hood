@@ -10,8 +10,8 @@ The Neighbourhood is a web app that allows users to sign in, set user profile, f
 
 
 ## Screenshots
-<img src="" alt="">
-<img src="" alt="">
+<img src="static/images/Theneighbor.png" alt="Theneighbor">
+
 
 ## Setup and Installation
 ### Requirements
