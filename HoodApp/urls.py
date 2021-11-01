@@ -12,9 +12,7 @@ urlpatterns =[
     path('post', views.posts, name="post"),
     path('new/post', views.Newpost, name="new_post"),
     path('business', views.business, name='business'),
-    path('new/business',views.create_new_business,name='new_business')
-    
-    
-    # path('search/', views.search_results, name='search_results')t
+    path('new/business',views.create_new_business,name='new_business'),
+    path('search/', views.search_results, name='search_results')
 
 ]
