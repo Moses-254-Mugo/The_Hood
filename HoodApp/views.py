@@ -21,7 +21,7 @@ def index(request):
 @login_required(login_url='/accounts/login/')
 def myProfile(request):
     current_user= request.user
-    profiles =Profile.objects.get(username=current_user)
+    profiles=Profile.objects.filter( user_id=current_user.id).first()
     return render(request, 'user_profile.html', {'profiles':profiles})
 
 @login_required(login_url='/accounts/login/')
@@ -43,7 +43,7 @@ def New_profile(request):
 def update_profile(request):
     current_user=request.user
     if request.method=="POST":
-        instance = Profile.objects.get(username=current_user)
+        instance = Profile.objects.filter(user_id=current_user.id).first()
         form = ProfileForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             profile = form.save(commit =False)
@@ -51,8 +51,8 @@ def update_profile(request):
             profile.save()
 
         return redirect('index')
-    elif Profile.objects.get(username = current_user):
-        profile = Profile.objects.get(username = current_user)
+    elif Profile.objects.filter( user_id=current_user.id).exists():
+        profile = Profile.objects.filter( user_id=current_user.id).first()
         form = ProfileForm(instance=profile)
     else:
         form = ProfileForm()
@@ -62,7 +62,7 @@ def update_profile(request):
 @login_required(login_url='/accounts/login/')
 def well_being(request):
     current_user = request.user
-    profile = Profile.objects.get(username=current_user)
+    profile = Profile.objects.filter( user_id=current_user.id).first()
     health = Health.objects.filter(neighbourhood=profile.neighbourhood)
 
     return render(request,'health.html', {'health':health})
@@ -70,7 +70,7 @@ def well_being(request):
 @login_required(login_url='/accounts/login/')
 def authorities(request):
     current_user = request.user
-    profile = Profile.objects.get(username =  current_user)
+    profile = Profile.objects.filter( user_id=current_user.id).first()
     authorities = Police.objects.filter(neighbourhood = profile.neighbourhood) 
 
     return render(request, 'authorities.html',{'authorities': authorities})
@@ -78,7 +78,7 @@ def authorities(request):
 @login_required(login_url='/accounts/login/')
 def posts(request):
     current_user = request.user
-    profile=Profile.objects.get(username=current_user)
+    profile=Profile.objects.filter( user_id=current_user.id).first()
     post = Post.objects.filter(neighbourhood=profile.neighbourhood)
 
     return render(request, 'post.html', {'post':post})
@@ -86,7 +86,7 @@ def posts(request):
 @login_required(login_url='/accounts/login/')
 def Newpost(request):
     current_user = request.user
-    profile=Profile.objects.get(username=current_user)
+    profile=Profile.objects.filter( user_id=current_user.id).first()
 
     if request.method=="POST":
         form = PostForm(request.POST,request.FILES)
@@ -105,8 +105,8 @@ def Newpost(request):
 
 @login_required(login_url='/accounts/login/')
 def business(request):
-    current__user=request.user
-    profile=Profile.objects.get(username=current__user)
+    current_user=request.user
+    profile=Profile.objects.filter( user_id=current_user.id).first()
     business =Business.objects.filter(neighbourhood=profile.neighbourhood)
 
     return render(request, 'business.html',{'business':business})

@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-1%v*p#v3cg&u23udslc$&o%wt$xdxe&=fgxp-=3td!!iub_@d^
 # SECURITY WARNING: don't run with debug turned on in production!
 MODE=config("MODE", default="dev")
 
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = os.environ.get('DEBUG', True)
 # development
 if config('MODE')=="dev":
    DATABASES = {

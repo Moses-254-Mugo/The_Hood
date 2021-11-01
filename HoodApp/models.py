@@ -25,7 +25,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=40)
     description = HTMLField()
     neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE)
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     email = models.EmailField()
 
     def __str__(self):
