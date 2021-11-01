@@ -12,7 +12,7 @@ def index(request):
         if not request.user.is_authenticated:
             return redirect('/accounts/login')
         current_user = request.user
-        # profile = Profile.objects.get(username=current_user)
+        profile = Profile.objects.filter( user_id=current_user.id).first()
     except ObjectDoesNotExist:
         return redirect('create-profile')
     return render(request,'index.html')
@@ -114,7 +114,7 @@ def business(request):
 @login_required(login_url='/accounts/login/')
 def create_new_business(request):
     current_user = request.user
-    profile = Profile.objects.get(username=current_user)
+    profile = Profile.objects.filter( user_id=current_user.id).first()
 
     if request.method=="POST":
         form= BusinessForm(request.POST, request.FILES)
