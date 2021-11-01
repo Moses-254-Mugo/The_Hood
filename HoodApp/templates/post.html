@@ -2,27 +2,29 @@
 {% load bootstrap4 %}
 {% block content %}
 <div class="container">
-      <div class="text-center">
-        <a href="{% url 'new_post' %}">
-            <button class="bnt btn-primary">Post Update</button>
-        </a>
-    </div>
-    {% for posts in post%}
-    <div class="row row-cols-1 row-cols-md-2 g-2">
-      <div class="col">
-        <div class="card">
-          <h4 class="text-center"><b>Title: </b>{{posts.title}}</h4>
-          <img src="{{posts.post_img.url}}" class="card-img-top" alt="image" width="100%">
-          <div class="card-body">
-            <h5 class="card-title"><b>Username:</b> {{posts.username}}</h5>
-            <p class="card-text"><b>Post:</b>{{posts.post}}</p>
-                  <h5 class="card-title"><b>Neighbourhood:</b> {{posts.neighbourhood}}</h5>
-            <p class="card-text">....</p>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <div class="text-center">
+            <a href="{% url 'new_post' %}">
+                <button class="bnt btn-primary">Post Update</button>
+            </a>
           </div>
+          <div class="text-center">
+          {% for posts in post%}
+            <h4 class="text-center"><b>Title: </b>{{posts.title}}</h4>
+            <hr>
+            <img src="{{posts.post_img.url}}" class="card-img-top" alt="image" width="100%">
+            <hr>
+            <h5 class="card-title"><b>Username:</b> {{posts.username}}</h5>
+            <p class="text-center"><b>Post:</b>{{posts.post}}</p>
+                  <h5 class="card-title"><b>Neighbourhood:</b> {{posts.neighbourhood}}</h5>
+          {% endfor %}
+          </div>
+
         </div>
+        <div class="col-sm-3"></div>
       </div>
-      {% endfor %}
-    </div>
    
                
 </div>
@@ -36,5 +38,5 @@
   }
 </style>
 {% endblock %}
-    
-            
+  
+</div>

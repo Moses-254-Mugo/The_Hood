@@ -123,6 +123,7 @@ def create_new_business(request):
             business.owner = current_user
             business.neighbourhood = profile.neighbourhood
             business.save()
+            
         return HttpResponseRedirect('/business')
     else:
         form = BusinessForm()
@@ -143,4 +144,4 @@ def search_results(request):
          return render(request, 'search.html', {'message':message, 'post': searhed_post, 'profile': profile})
     else:
         message= 'You have not search for any term'
-        return render(request, 'saeach.html', {'message':message})
+        return render(request, 'search.html', {'message':message})
